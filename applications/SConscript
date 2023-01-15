@@ -1,0 +1,31 @@
+from building import *
+import os
+
+cwd     = GetCurrentDir()
+CPPPATH = [cwd]
+src = Glob('*.c')
+
+#My applications
+src += Glob('LED/led.c')     #添加的.c源文件
+src += Glob('PWM/pwm.c')     #添加的.c源文件
+src += Glob('BUTTON/button.c')     #添加的.c源文件
+src += Glob('LCD/lcd.c')     #添加的.c源文件
+src += Glob('ADC/adc.c')     #添加的.c源文件
+src += Glob('USART/usart.c')     #添加的.c源文件
+
+CPPPATH += [cwd + '/LED']    #添加的源文件的进一步文件地址
+CPPPATH += [cwd + '/PWM'] 
+CPPPATH += [cwd + '/BUTTON'] 
+CPPPATH += [cwd + '/LCD']
+CPPPATH += [cwd + '/ADC'] 
+CPPPATH += [cwd + '/USART'] 
+#end
+
+group = DefineGroup('Applications', src, depend = [''], CPPPATH = CPPPATH)
+
+list = os.listdir(cwd)
+for item in list:
+    if os.path.isfile(os.path.join(cwd, item, 'SConscript')):
+        group = group + SConscript(os.path.join(item, 'SConscript'))
+
+Return('group')

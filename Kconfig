@@ -1,0 +1,59 @@
+mainmenu "RT-Thread Configuration"
+
+config BSP_DIR
+    string
+    option env="BSP_ROOT"
+    default "."
+
+config RTT_DIR
+    string
+    option env="RTT_ROOT"
+    default "rt-thread"
+
+config PKGS_DIR
+    string
+    option env="PKGS_ROOT"
+    default "packages"
+
+menu "TEST"
+    comment "this is a test for Kconfig"
+    menuconfig TEST_Kconfig
+        bool "my brother is stupid"
+        default n
+
+        if TEST_Kconfig
+
+            choice 
+
+                bool "Select CH "
+
+                config TEST_First
+                    bool "CH 1"
+
+                config TEST_Second
+                    bool "CH 2"
+
+            endchoice
+
+            config TEST_Konfig_2
+                bool "you're right !"
+                select   TEST_Konfig_4#TEST_Second也是一个配置选项
+                default n
+
+            config TEST_Konfig_3
+                bool "and so on.."
+                depends on TEST_Second && TEST_Konfig_4
+                default n
+
+        endif
+
+        config TEST_Konfig_4
+            bool "suprise "
+            default n
+
+endmenu
+
+source "$RTT_DIR/Kconfig"
+source "$PKGS_DIR/Kconfig"
+source "libraries/Kconfig"
+source "board/Kconfig"
