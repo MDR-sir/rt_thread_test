@@ -67,5 +67,5 @@ int usart_init()
     
     return 0;
 }
-MSH_CMD_EXPORT(usart_init,usart test)
+//MSH_CMD_EXPORT(usart_init,usart test)
 

@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define>RT_USING_LIBC, RT_USING_ARMLIBC, USE_HAL_DRIVER, STM32F407xx, __CLK_TCK=RT_TICK_PER_SECOND, __STDC_LIMIT_MACROS, __RTTHREAD__</Define>
               <Undefine></Undefine>
-              <IncludePath>rt-thread\components\libc\posix\io\stdio;libraries\HAL_Drivers;rt-thread\components\drivers\include;rt-thread\components\drivers\include;board\CubeMX_Config\Inc;rt-thread\include;applications\PWM;applications\BUTTON;libraries\HAL_Drivers\CMSIS\Include;rt-thread\libcpu\arm\cortex-m4;board\ports;board;applications\ADC;rt-thread\libcpu\arm\common;rt-thread\components\finsh;rt-thread\components\libc\posix\io\poll;libraries\HAL_Drivers\config;rt-thread\components\drivers\include;rt-thread\components\libc\posix\ipc;libraries\STM32F4xx_HAL\CMSIS\Device\ST\STM32F4xx\Include;rt-thread\components\drivers\include;libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Inc;rt-thread\components\libc\compilers\common\extension;applications;.;rt-thread\components\libc\compilers\common\extension\fcntl\octal;applications\USART;applications\LCD;rt-thread\components\libc\compilers\common\include;rt-thread\components\utilities\libadt;applications\LED</IncludePath>
+              <IncludePath>applications;applications\BUTTON;rt-thread\components\libc\posix\io\poll;libraries\HAL_Drivers\config;rt-thread\components\dfs\include;rt-thread\components\libc\posix\io\stdio;rt-thread\components\dfs\filesystems\romfs;rt-thread\components\drivers\include;rt-thread\components\drivers\include;board;rt-thread\libcpu\arm\cortex-m4;rt-thread\components\finsh;rt-thread\components\libc\posix\ipc;rt-thread\components\drivers\include;libraries\HAL_Drivers;board\CubeMX_Config\Inc;rt-thread\components\libc\compilers\common\include;applications\PWM;rt-thread\components\drivers\include;applications\LCD;rt-thread\components\dfs\filesystems\elmfat;applications\LED;libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Inc;applications\USART;board\ports;rt-thread\include;rt-thread\libcpu\arm\common;rt-thread\components\utilities\libadt;.;libraries\STM32F4xx_HAL\CMSIS\Device\ST\STM32F4xx\Include;rt-thread\components\libc\compilers\common\extension;rt-thread\components\drivers\include;applications\ADC;rt-thread\components\libc\compilers\common\extension\fcntl\octal;rt-thread\components\dfs\filesystems\devfs;libraries\HAL_Drivers\CMSIS\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -391,19 +391,19 @@
           <GroupName>Applications</GroupName>
           <Files>
             <File>
-              <FileName>led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>applications\LED\led.c</FilePath>
-            </File>
-            <File>
               <FileName>usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>applications\USART\usart.c</FilePath>
             </File>
             <File>
-              <FileName>button.c</FileName>
+              <FileName>lcd.c</FileName>
               <FileType>1</FileType>
-              <FilePath>applications\BUTTON\button.c</FilePath>
+              <FilePath>applications\LCD\lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>pwm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>applications\PWM\pwm.c</FilePath>
             </File>
             <File>
               <FileName>adc.c</FileName>
@@ -416,14 +416,14 @@
               <FilePath>applications\main.c</FilePath>
             </File>
             <File>
-              <FileName>lcd.c</FileName>
+              <FileName>led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>applications\LCD\lcd.c</FilePath>
+              <FilePath>applications\LED\led.c</FilePath>
             </File>
             <File>
-              <FileName>pwm.c</FileName>
+              <FileName>button.c</FileName>
               <FileType>1</FileType>
-              <FilePath>applications\PWM\pwm.c</FilePath>
+              <FilePath>applications\BUTTON\button.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -566,6 +566,36 @@
               <FilePath>rt-thread\components\drivers\misc\rt_drv_pwm.c</FilePath>
             </File>
             <File>
+              <FileName>block_dev.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\sdio\block_dev.c</FilePath>
+            </File>
+            <File>
+              <FileName>gpt.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\sdio\gpt.c</FilePath>
+            </File>
+            <File>
+              <FileName>mmc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\sdio\mmc.c</FilePath>
+            </File>
+            <File>
+              <FileName>mmcsd_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\sdio\mmcsd_core.c</FilePath>
+            </File>
+            <File>
+              <FileName>sd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\sdio\sd.c</FilePath>
+            </File>
+            <File>
+              <FileName>sdio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\drivers\sdio\sdio.c</FilePath>
+            </File>
+            <File>
               <FileName>serial_v2.c</FileName>
               <FileType>1</FileType>
               <FilePath>rt-thread\components\drivers\serial\serial_v2.c</FilePath>
@@ -584,6 +614,11 @@
               <FileName>board.c</FileName>
               <FileType>1</FileType>
               <FilePath>board\board.c</FilePath>
+            </File>
+            <File>
+              <FileName>drv_filesystem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>board\ports\drv_filesystem.c</FilePath>
             </File>
             <File>
               <FileName>drv_lcd.c</FileName>
@@ -621,6 +656,11 @@
               <FilePath>libraries\HAL_Drivers\drv_pwm.c</FilePath>
             </File>
             <File>
+              <FileName>drv_sdio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\HAL_Drivers\drv_sdio.c</FilePath>
+            </File>
+            <File>
               <FileName>drv_tim.c</FileName>
               <FileType>1</FileType>
               <FilePath>libraries\HAL_Drivers\drv_tim.c</FilePath>
@@ -629,6 +669,61 @@
               <FileName>drv_usart_v2.c</FileName>
               <FileType>1</FileType>
               <FilePath>libraries\HAL_Drivers\drv_usart_v2.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>Filesystem</GroupName>
+          <Files>
+            <File>
+              <FileName>devfs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\dfs\filesystems\devfs\devfs.c</FilePath>
+            </File>
+            <File>
+              <FileName>dfs_elm.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\dfs\filesystems\elmfat\dfs_elm.c</FilePath>
+            </File>
+            <File>
+              <FileName>ff.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\dfs\filesystems\elmfat\ff.c</FilePath>
+            </File>
+            <File>
+              <FileName>ffunicode.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\dfs\filesystems\elmfat\ffunicode.c</FilePath>
+            </File>
+            <File>
+              <FileName>dfs_romfs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\dfs\filesystems\romfs\dfs_romfs.c</FilePath>
+            </File>
+            <File>
+              <FileName>romfs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\dfs\filesystems\romfs\romfs.c</FilePath>
+            </File>
+            <File>
+              <FileName>dfs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\dfs\src\dfs.c</FilePath>
+            </File>
+            <File>
+              <FileName>dfs_file.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\dfs\src\dfs_file.c</FilePath>
+            </File>
+            <File>
+              <FileName>dfs_fs.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\dfs\src\dfs_fs.c</FilePath>
+            </File>
+            <File>
+              <FileName>dfs_posix.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\dfs\src\dfs_posix.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -654,6 +749,11 @@
               <FileName>cmd.c</FileName>
               <FileType>1</FileType>
               <FilePath>rt-thread\components\finsh\cmd.c</FilePath>
+            </File>
+            <File>
+              <FileName>msh_file.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>rt-thread\components\finsh\msh_file.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -756,6 +856,11 @@
               <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_rcc_ex.c</FilePath>
             </File>
             <File>
+              <FileName>stm32f4xx_hal_sd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_sd.c</FilePath>
+            </File>
+            <File>
               <FileName>stm32f4xx_hal_tim.c</FileName>
               <FileType>1</FileType>
               <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_tim.c</FilePath>
@@ -849,6 +954,11 @@
               <FileName>stm32f4xx_hal_cec.c</FileName>
               <FileType>1</FileType>
               <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_cec.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_ll_sdmmc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_sdmmc.c</FilePath>
             </File>
             <File>
               <FileName>system_stm32f4xx.c</FileName>

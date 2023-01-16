@@ -60,4 +60,4 @@ int adc_read()
     return 0;
 }
 
-MSH_CMD_EXPORT(adc_read,a test of adc)
+//MSH_CMD_EXPORT(adc_read,a test of adc)

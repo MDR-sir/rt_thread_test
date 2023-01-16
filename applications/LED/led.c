@@ -74,7 +74,7 @@ int led_test()
 }
 
 
-MSH_CMD_EXPORT(led_test,a test of led)
+//MSH_CMD_EXPORT(led_test,a test of led)
 
 
 
@@ -89,7 +89,7 @@ static void LED_ON()
 		}
 }
 
-MSH_CMD_EXPORT(LED_ON,start led test)
+//MSH_CMD_EXPORT(LED_ON,start led test)
 
 
 static void LED_OFF()
@@ -103,7 +103,7 @@ static void LED_OFF()
 		}
 }
 
-MSH_CMD_EXPORT(LED_OFF,close led test)
+//MSH_CMD_EXPORT(LED_OFF,close led test)
 
 
 

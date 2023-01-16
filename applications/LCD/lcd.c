@@ -388,7 +388,7 @@ int lcd_test()
 		return 0;
 }
 
-MSH_CMD_EXPORT(lcd_test,a test of lcd)
+//MSH_CMD_EXPORT(lcd_test,a test of lcd)
 
 
 

@@ -79,4 +79,4 @@ void pwm_led_sample(void)
     rt_pwm_disable(pwm_device, PWM_CHANNEL);
 }
 /* 导出到 msh 命令列表中 */
-MSH_CMD_EXPORT(pwm_led_sample, pwm sample);
+//MSH_CMD_EXPORT(pwm_led_sample, pwm sample);
