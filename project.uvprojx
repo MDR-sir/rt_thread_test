@@ -54,7 +54,7 @@
           <CreateLib>0</CreateLib>
           <CreateHexFile>0</CreateHexFile>
           <DebugInformation>1</DebugInformation>
-          <BrowseInformation>0</BrowseInformation>
+          <BrowseInformation>1</BrowseInformation>
           <ListingPath>.\build\keil\List\</ListingPath>
           <HexFormatSelection>1</HexFormatSelection>
           <Merge32K>0</Merge32K>
@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define>RT_USING_LIBC, RT_USING_ARMLIBC, USE_HAL_DRIVER, STM32F407xx, __CLK_TCK=RT_TICK_PER_SECOND, __STDC_LIMIT_MACROS, __RTTHREAD__</Define>
               <Undefine></Undefine>
-              <IncludePath>applications;applications\BUTTON;rt-thread\components\libc\posix\io\poll;libraries\HAL_Drivers\config;rt-thread\components\dfs\include;rt-thread\components\libc\posix\io\stdio;rt-thread\components\dfs\filesystems\romfs;rt-thread\components\drivers\include;rt-thread\components\drivers\include;board;rt-thread\libcpu\arm\cortex-m4;rt-thread\components\finsh;rt-thread\components\libc\posix\ipc;rt-thread\components\drivers\include;libraries\HAL_Drivers;board\CubeMX_Config\Inc;rt-thread\components\libc\compilers\common\include;applications\PWM;rt-thread\components\drivers\include;applications\LCD;rt-thread\components\dfs\filesystems\elmfat;applications\LED;libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Inc;applications\USART;board\ports;rt-thread\include;rt-thread\libcpu\arm\common;rt-thread\components\utilities\libadt;.;libraries\STM32F4xx_HAL\CMSIS\Device\ST\STM32F4xx\Include;rt-thread\components\libc\compilers\common\extension;rt-thread\components\drivers\include;applications\ADC;rt-thread\components\libc\compilers\common\extension\fcntl\octal;rt-thread\components\dfs\filesystems\devfs;libraries\HAL_Drivers\CMSIS\Include</IncludePath>
+              <IncludePath>applications;applications\BUTTON;rt-thread\components\libc\posix\io\poll;libraries\HAL_Drivers\config;rt-thread\components\dfs\include;rt-thread\components\libc\posix\io\stdio;rt-thread\components\dfs\filesystems\romfs;rt-thread\components\drivers\include;rt-thread\components\drivers\include;board;rt-thread\libcpu\arm\cortex-m4;rt-thread\components\finsh;rt-thread\components\libc\posix\ipc;rt-thread\components\drivers\include;libraries\HAL_Drivers;board\CubeMX_Config\Inc;rt-thread\components\libc\compilers\common\include;applications\PWM;rt-thread\components\drivers\include;applications\LCD;rt-thread\components\dfs\filesystems\elmfat;applications\LED;libraries\STM32F4xx_HAL\STM32F4xx_HAL_Driver\Inc;applications\USART;board\ports;rt-thread\include;rt-thread\libcpu\arm\common;rt-thread\components\utilities\libadt;.;libraries\STM32F4xx_HAL\CMSIS\Device\ST\STM32F4xx\Include;rt-thread\components\libc\compilers\common\extension;rt-thread\components\drivers\include;applications\ADC;libraries\HAL_Drivers\CMSIS\Include;rt-thread\components\libc\compilers\common\extension\fcntl\octal;rt-thread\components\dfs\filesystems\devfs;applications\SD</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -391,14 +391,24 @@
           <GroupName>Applications</GroupName>
           <Files>
             <File>
-              <FileName>usart.c</FileName>
+              <FileName>button.c</FileName>
               <FileType>1</FileType>
-              <FilePath>applications\USART\usart.c</FilePath>
+              <FilePath>applications\BUTTON\button.c</FilePath>
+            </File>
+            <File>
+              <FileName>led.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>applications\LED\led.c</FilePath>
             </File>
             <File>
               <FileName>lcd.c</FileName>
               <FileType>1</FileType>
               <FilePath>applications\LCD\lcd.c</FilePath>
+            </File>
+            <File>
+              <FileName>sd.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>applications\SD\sd.c</FilePath>
             </File>
             <File>
               <FileName>pwm.c</FileName>
@@ -416,14 +426,9 @@
               <FilePath>applications\main.c</FilePath>
             </File>
             <File>
-              <FileName>led.c</FileName>
+              <FileName>usart.c</FileName>
               <FileType>1</FileType>
-              <FilePath>applications\LED\led.c</FilePath>
-            </File>
-            <File>
-              <FileName>button.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>applications\BUTTON\button.c</FilePath>
+              <FilePath>applications\USART\usart.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -586,7 +591,7 @@
               <FilePath>rt-thread\components\drivers\sdio\mmcsd_core.c</FilePath>
             </File>
             <File>
-              <FileName>sd.c</FileName>
+              <FileName>sdio_sd.c</FileName>
               <FileType>1</FileType>
               <FilePath>rt-thread\components\drivers\sdio\sd.c</FilePath>
             </File>
@@ -614,11 +619,6 @@
               <FileName>board.c</FileName>
               <FileType>1</FileType>
               <FilePath>board\board.c</FilePath>
-            </File>
-            <File>
-              <FileName>drv_filesystem.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>board\ports\drv_filesystem.c</FilePath>
             </File>
             <File>
               <FileName>drv_lcd.c</FileName>

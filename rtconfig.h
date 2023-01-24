@@ -226,8 +226,6 @@
 #define BSP_USING_SRAM
 #define BSP_USING_ONBOARD_LCD
 #define BSP_USING_ONBOARD_LCD_TEST
-#define BSP_USING_FS
-#define BSP_USING_SDCARD_FATFS
 
 /* On-chip Peripheral Drivers */
 

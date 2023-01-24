@@ -5,7 +5,9 @@
 #include "button.h"
 #include "lcd.h"
 #include "usart.h"
-
+#include "sd.h"
+#include <dfs_fs.h>
+#include <dfs_elm.h>
 int main(void)
 {	
 		indicator_lamp_init();
@@ -13,6 +15,8 @@ int main(void)
 	  adc_read();
 		usart_init();
 		lcd_test();
+		sd_test();
+	
     return RT_EOK;
 }
 
