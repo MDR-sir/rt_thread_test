@@ -12,6 +12,7 @@ src += Glob('BUTTON/button.c')     #添加的.c源文件
 src += Glob('LCD/lcd.c')     #添加的.c源文件
 src += Glob('ADC/adc.c')     #添加的.c源文件
 src += Glob('USART/usart.c')     #添加的.c源文件
+src += Glob('SD/sd.c')     #添加的.c源文件
 
 CPPPATH += [cwd + '/LED']    #添加的源文件的进一步文件地址
 CPPPATH += [cwd + '/PWM'] 
@@ -19,6 +20,7 @@ CPPPATH += [cwd + '/BUTTON']
 CPPPATH += [cwd + '/LCD']
 CPPPATH += [cwd + '/ADC'] 
 CPPPATH += [cwd + '/USART'] 
+CPPPATH += [cwd + '/SD'] 
 #end
 
 group = DefineGroup('Applications', src, depend = [''], CPPPATH = CPPPATH)
