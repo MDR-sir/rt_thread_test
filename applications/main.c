@@ -14,8 +14,8 @@ int main(void)
 		Buttons_init();
 	  adc_read();
 		usart_init();
+		sd_init();
 		lcd_test();
-		sd_test();
 	
     return RT_EOK;
 }

@@ -5,6 +5,7 @@
 #include "stdio.h"
 #include "adc.h" 
 #include "usart.h"
+#include "sd.h"
 
 #define LCD_BASE ((uint32_t)(0x6C000000 | 0x0000007E))
 #define LCD ((LCD_CONTROLLER_TypeDef *)LCD_BASE)
@@ -334,7 +335,7 @@ void LCD_ShowString(rt_uint16_t x, rt_uint16_t y, rt_uint16_t width, rt_uint16_t
 
 
 /******************************************************************/
-#define Thread_Stack_Size 512
+#define Thread_Stack_Size 1024
 #define Thread_Priority 25
 #define Thread_Timeslice 5
 
@@ -345,14 +346,14 @@ static void lcd_thread_entry(void* parameter)
 {
     rt_device_t lcd = RT_NULL;
 	
-		rt_uint8_t lcd_id[12],str[50],msg_str[100];	
-		rt_uint32_t vol;
-		rt_err_t res;
+    rt_uint8_t lcd_id[12],str[50],msg_str[100],fs_str[100];	
+    rt_uint32_t vol;
+    rt_err_t res_usart,res_fs;
 	
     lcd = rt_device_find("lcd");
     rt_device_init(lcd);
 	
-		sprintf((char*)lcd_id,"LCD ID:%04X",lcddev.id);
+    sprintf((char*)lcd_id,"LCD ID:%04X",lcddev.id);
     LCD_ShowString(30,40,210,24,24,"RT_Thread_Test",RED,WHITE);	
     LCD_ShowString(30,70,200,16,16,"MY TEST",BLUE,WHITE);
     LCD_ShowString(30,90,200,16,16,"M.sir",GBLUE,WHITE);
@@ -361,11 +362,14 @@ static void lcd_thread_entry(void* parameter)
 		while(1)
 		{
 			rt_mb_recv(vol_mb, &vol, 5);
-			res = rt_mq_recv (msg_mq, msg_str,100, 5);
+			res_usart = rt_mq_recv (msg_mq, msg_str,100, 5);
+			res_fs = rt_mq_recv (fs_mq, fs_str,100, 5);
 			sprintf((char*)str,"the voltage is :%d.%02d \n", vol / 100, vol % 100);
 			LCD_ShowString(80,5,200,16,16,str,RED,WHITE);
-			if(res == RT_EOK)
-					LCD_ShowString(30,180,100,200,16,msg_str,BLUE,WHITE);
+			if(res_usart == RT_EOK)
+                LCD_ShowString(30,180,100,200,16,msg_str,BLUE,WHITE);
+			if(res_fs == RT_EOK)
+                LCD_ShowString(30,210,100,200,16,fs_str,BLUE,WHITE);
 			
 		}
 }
